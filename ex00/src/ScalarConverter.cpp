@@ -1,5 +1,8 @@
 #include "../inc/ScalarConverter.hpp"
 #include <string>
+#include <stdexcept>
+#include <iostream>
+#include <regex>
 ScalarConverter::ScalarConverter(void) {
 	
 }
@@ -20,3 +23,16 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
 ScalarConverter::~ScalarConverter(void) {
 }
 
+void ScalarConverter::convert(std::string to_convert) {
+	double d;
+
+	try
+	{
+		d = findType(to_convert);
+		std::cout << d << std::endl;
+	}
+	catch (std::invalid_argument &e)
+	{
+		std::cout << "Error: " << e.what() << std::endl;
+	}
+}

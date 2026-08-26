@@ -1,3 +1,5 @@
+#include <string>
+
 class ScalarConverter {
 	private:
 		ScalarConverter(void);
@@ -5,4 +7,5 @@ class ScalarConverter {
 		ScalarConverter& operator=(const ScalarConverter& other);
 		~ScalarConverter(void);
 	public:
+		void static convert(std::string to_convert);
 };
