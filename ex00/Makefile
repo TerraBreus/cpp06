@@ -1,6 +1,6 @@
 NAME := numbersDontExist
 CC := c++
-CPPFLAGS := -Wall -Wextra -Werror -g
+CPPFLAGS := -Wall -Wextra -Werror
 
 SRC := \
 	   ScalarConverter.cpp \
