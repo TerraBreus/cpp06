@@ -21,17 +21,45 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other) {
 
 double findType(std::string str)
 {
-	if (std::regex_match(str, std::regex("[\\+-]?[0-9]+")))
-	{
+	double d;
+	try {
+		//RegEx; Singular +/- is optional (?), then at least one (+) [0-9] 
+		if (std::regex_match(str, std::regex("[\\+-]?[0-9]+")))
+		{
 			//integer.
-		try {
 			int i = std::stoi(str);
-			return (static_cast<double>(i));
-			}
-		catch (const std::out_of_range& e) {
-            throw std::invalid_argument("Integer overflow/out of range: " + str);
-        }}
-	throw std::invalid_argument("Invalid argument: " + str);
+			d = static_cast<double>(i);
+		}
+		else if (std::regex_match(str, std::regex("[\\+-]?[0-9]+\\.[0-9]+")))
+		{
+			//Double literal (4.2, -4.2, 34.123)
+			d = std::stod(str);
+		}
+		else if (std::regex_match(str, std::regex("[\\+-]?[0-9]+\\.[0-9]+f")))
+		{
+			//float 4.0f, 12.456f
+			float f = std::stof(str);
+			d = static_cast<double>(f);
+		}
+		else if (str.length() == 1)
+		{
+			char c = str[0];
+			if (c >= '!' && c <= 'z')
+				d = static_cast<double>(c);
+			else
+				throw std::invalid_argument("Non displayable character given.");
+		}
+		else 
+			throw std::invalid_argument("Argument \"" + str 
+					+ "\" is neither of type; int, float, double or char! ");
+	}
+	catch (const std::out_of_range& e) {
+		throw std::invalid_argument("Integer overflow/out of range: " + str);
+	}
+	catch (std::invalid_argument& e) {
+		throw ;
+	}
+	return (d);
 }
 			
 
