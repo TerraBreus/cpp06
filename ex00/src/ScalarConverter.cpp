@@ -41,6 +41,7 @@ double findType(std::string str)
 			float f = std::stof(str);
 			d = static_cast<double>(f);
 		}
+		// Characters must be of length 1.
 		else if (str.length() == 1)
 		{
 			char c = str[0];
@@ -48,6 +49,16 @@ double findType(std::string str)
 				d = static_cast<double>(c);
 			else
 				throw std::invalid_argument("Non displayable character given.");
+		}
+		// Pseudo literals... you know for FUN!!! (F*cking Useful No?)
+		else if (std::regex_match(str, std::regex("([\\+-]inf)|(nan)")))
+		{
+			d = std::stod(str);
+		}
+		else if (std::regex_match(str, std::regex("([\\+-]inff)|nanf")))
+		{
+			float f = std::stof(str);
+			d = static_cast<double>(f);
 		}
 		else 
 			throw std::invalid_argument("Argument \"" + str 
