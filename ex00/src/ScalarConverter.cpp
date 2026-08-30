@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <regex>
+#include <limits>
 
 ScalarConverter::ScalarConverter(void) {
 	
@@ -73,6 +74,22 @@ double findType(std::string str)
 	return (d);
 }
 			
+void printType(double d)
+{
+	std::cout << "Double: " << d << std::endl;
+	if (d >= '!' && d <= 'z')
+		std::cout << "Char: " << static_cast<char>(d) << std::endl;
+	else 
+		std::cout << "Char: Non displayable." << std::endl;
+	if (d <= std::numeric_limits<float>::max() && d >= std::numeric_limits<float>::min())
+		std::cout << "Float: " << static_cast<float>(d) << std::endl;
+	else
+		std::cout << "Float: Impossible" << std::endl;
+	if (d <= std::numeric_limits<int>::max() && d >= std::numeric_limits<int>::min())
+		std::cout << "Int: " << static_cast<int>(d) << std::endl;
+	else
+		std::cout << "Int: Impossible" << std::endl;
+}
 
 ScalarConverter::~ScalarConverter(void) {
 }
@@ -83,7 +100,7 @@ void ScalarConverter::convert(std::string to_convert) {
 	try
 	{
 		d = findType(to_convert);
-		std::cout << d << std::endl;
+		printType(d);
 	}
 	catch (std::invalid_argument &e)
 	{
