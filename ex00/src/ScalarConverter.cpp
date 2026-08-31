@@ -2,8 +2,10 @@
 #include <string>
 #include <stdexcept>
 #include <iostream>
+#include <iomanip>
 #include <regex>
 #include <limits>
+#include <cmath>
 
 ScalarConverter::ScalarConverter(void) {
 	
@@ -112,6 +114,7 @@ void printType(double d)
 		std::cout << "Char: Impossible." << std::endl;
 	else
 		std::cout << "Char: Non displayable." << std::endl;
+	// Integer
 	if (d <= std::numeric_limits<int>::max() && d >= std::numeric_limits<int>::min())
 		std::cout << "Int: " << static_cast<int>(d) << std::endl;
 	else
