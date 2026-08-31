@@ -119,6 +119,15 @@ void printType(double d)
 		std::cout << "Int: " << static_cast<int>(d) << std::endl;
 	else
 		std::cout << "Int: Impossible" << std::endl;
+	// Float
+	std::cout << std::fixed << std::setprecision(1);
+	if (d <= std::numeric_limits<float>::max() && d >= std::numeric_limits<float>::min())
+		std::cout << "Float: " << static_cast<float>(d) << "f" << std::endl;
+	else
+		std::cout << "Float: Impossible" << std::endl;
+
+	// Double
+	std::cout << "Double: " << d << std::endl;
 }
 
 ScalarConverter::~ScalarConverter(void) {
