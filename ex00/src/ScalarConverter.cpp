@@ -114,11 +114,13 @@ void printType(double d)
 		std::cout << "Char: Impossible." << std::endl;
 	else
 		std::cout << "Char: Non displayable." << std::endl;
+
 	// Integer
 	if (d <= std::numeric_limits<int>::max() && d >= std::numeric_limits<int>::min())
 		std::cout << "Int: " << static_cast<int>(d) << std::endl;
 	else
 		std::cout << "Int: Impossible" << std::endl;
+	
 	// Float
 	std::cout << std::fixed << std::setprecision(1);
 	if (d <= std::numeric_limits<float>::max() && d >= std::numeric_limits<float>::min())
