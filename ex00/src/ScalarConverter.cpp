@@ -76,7 +76,35 @@ double findType(std::string str)
 			
 void printType(double d)
 {
-	std::cout << "Double: " << d << std::endl;
+	// Pseudoliterals..  you know... for fun.... (Freaking Unbearable Non-sense)	
+	if (std::isnan(d) || std::isinf(d))
+	{
+		if (std::isnan(d))
+		{
+			std::cout << "Char: Impossible.\n"
+				<< "Int: Impossible.\n"
+				<< "Float: nanf.\n"
+				<< "Double: nan." << std::endl;
+			return ;
+		}
+		else
+		{
+			std::cout << "Char: Impossible.\n"
+				<< "Int: Impossible.\n";
+			if (d > 0)
+			{
+				std::cout << "Float: inff.\n"
+				<< "Double: inf." << std::endl;
+			}
+			else
+			{
+				std::cout << "Float: -inff.\n"
+				<< "Double: -inf." << std::endl;
+			}
+			return ;
+		}
+	}
+
 	if (d >= '!' && d <= 'z')
 		std::cout << "Char: " << static_cast<char>(d) << std::endl;
 	else 
