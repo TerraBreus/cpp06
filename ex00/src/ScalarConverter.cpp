@@ -105,14 +105,13 @@ void printType(double d)
 		}
 	}
 
+	// Char
 	if (d >= '!' && d <= 'z')
 		std::cout << "Char: " << static_cast<char>(d) << std::endl;
-	else 
-		std::cout << "Char: Non displayable." << std::endl;
-	if (d <= std::numeric_limits<float>::max() && d >= std::numeric_limits<float>::min())
-		std::cout << "Float: " << static_cast<float>(d) << std::endl;
+	else if (d > std::numeric_limits<char>::max() || d < std::numeric_limits<char>::min())
+		std::cout << "Char: Impossible." << std::endl;
 	else
-		std::cout << "Float: Impossible" << std::endl;
+		std::cout << "Char: Non displayable." << std::endl;
 	if (d <= std::numeric_limits<int>::max() && d >= std::numeric_limits<int>::min())
 		std::cout << "Int: " << static_cast<int>(d) << std::endl;
 	else
