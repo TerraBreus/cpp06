@@ -69,4 +69,18 @@ int main(void)
 		identify(*test);
 		delete (test);
 	}
+
+
+	std::cout << "------\n\n\n" << std::endl;
+	std::cout << "Attempting to identify `Base base_test`" << std::endl;
+	Base base_test;
+	std::cout << "Identifying through ptr" << std::endl;
+	identify(base_test);
+	std::cout << "Identifying through ref" << std::endl;
+	identify(&base_test);
+
+	std::cout << "------\n\n\n" << std::endl;
+	std::cout << "Attempting to identify a NULL ptr" << std::endl;
+	std::cout << "Identifying through ptr" << std::endl;
+	identify(NULL);
 }
